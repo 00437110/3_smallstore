@@ -65,7 +65,16 @@ export default function RootLayout({ children }) {
                 <Link href={'/faq'}>FAQ</Link>
               </div>
             </div>
-            <div className="socials"></div>
+            <div className="socials">
+              <p>© <a href="https://github.com/00437110/3_smallstore" target="_blank"> Erick</a> 2025
+              <br /> Built with Next JS & <a target="_blank" href="https://fantacss.smoljames.com/">FantaCSS</a>🎇 
+              </p>
+            </div>
+            <div className="social-links">
+              <Link href={'/'} target="_blank"><i className="fa-brands fa-github"></i></Link>
+              <Link href={'/'} target="_blank"><i className="fa-brands fa-youtube"></i></Link>
+              <Link href={'/'} target="_blank"><i className="fa-brands fa-linkedin"></i></Link>
+            </div>
           </footer>
         </div>
       </body>
