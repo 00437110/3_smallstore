@@ -21,13 +21,13 @@ export default function Products() {
                     <h2>Shop our selection</h2>
                     <p>From organization or accesorization</p>
                 </div>
-                <div className="planner-content">
+                <div className="planner-container">
                     <div>
                         <button className="img-button">
                             <img src="low_res/planner.jpeg" alt="high-res-planner" />
                         </button>
                     </div>
-                    <div className="text-large planner-header">
+                    <div className="planner-info">
                         <p className="text-large planner-header">
                             Medieval Dragon Month Planner
                         </p>
