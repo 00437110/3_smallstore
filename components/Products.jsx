@@ -2,23 +2,34 @@
 
 import { useState } from "react"
 import Portal from "./Portal"
+import { useProducts } from "@/context/ProductContext"
 
-export default function Products() {
-
+export default function Products(props) {
+    const { planner, stickers } = props
 
     const [portalImage, setPortalImage] = useState(null)
+    
 
-    const stickerDescriptions = {
-        CSS_HTML_Javascript: "Core web technologies for structure, styling, interactivity.",
-        Docker: "Platform for containerizing, deploying, and scaling applications.",
-        Firebase: "Cloud platform for databases, authentication, and app backend.",
-        NextJS: "React-based framework for server-side rendering and static sites.",
-        NodeJS: "Javascript runtime for building scalable backend applications.",
-        PostgreSQL: "Robust open-source database with advanced querying capabilities.",
-        ReactJS: "Javascript library for building interactive user interfaces."
-    }
+    const { handleAddProduct, cart } = useProducts()
 
-    const stickers = Object.keys(stickerDescriptions) // we grab the array to turn into a map
+    console.log(cart)
+    /*
+        const stickerDescriptions = {
+            CSS_HTML_Javascript: "Core web technologies for structure, styling, interactivity.",
+            Docker: "Platform for containerizing, deploying, and scaling applications.",
+            Firebase: "Cloud platform for databases, authentication, and app backend.",
+            NextJS: "React-based framework for server-side rendering and static sites.",
+            NodeJS: "Javascript runtime for building scalable backend applications.",
+            PostgreSQL: "Robust open-source database with advanced querying capabilities.",
+            ReactJS: "Javascript library for building interactive user interfaces."
+        }
+    
+        const stickersKeys = Object.keys(stickerDescriptions) // we grab the array to turn into a map
+    */
+    if (!stickers.length || !planner) { return null }
+    console.log(planner)
+    console.log(stickers)
+
 
     return (
         <>
@@ -82,18 +93,20 @@ export default function Products() {
                 </div>
                 <div className="sticker-container">
                     {stickers.map((sticker, stickerIndex) => { //we use this to create a reiterated
+                        const stickerName = sticker.name
+                        const stickerImgUrl = sticker.name.replaceAll(' Sticker.png', '').replaceAll(' ', '_')
                         return (
                             <div key={stickerIndex} className="sticker-card">
                                 <button onClick={() => {
-                                    setPortalImage(sticker)
+                                    setPortalImage(stickerImgUrl)
                                 }}
                                     className="img-button">
-                                    <img src={`low_res/${sticker}.jpeg`} alt={`${sticker}-low-res`} />
+                                    <img src={`low_res/${stickerImgUrl}.jpeg`} alt={`${stickerImgUrl}-low-res`} />
                                 </button>
                                 <div className="sticker-info">
-                                    <p className="text-medium">{sticker.replaceAll('_', ' ')} Sticker.png</p>
-                                    <p>{stickerDescriptions[sticker]}</p>
-                                    <h4><span>$</span>5.99</h4>
+                                    <p className="text-medium">{stickerName}</p>
+                                    <p>{sticker.description}</p>
+                                    <h4><span>$</span>{sticker.prices[0].unit_amount / 100}</h4>
                                     <button>Add to Cart</button>
                                 </div>
                             </div>
