@@ -10,12 +10,12 @@ export default function Products() {
 
     const stickerDescriptions = {
         CSS_HTML_Javascript: "Core web technologies for structure, styling, interactivity.",
-        Docker: "Platfrom for containerizing, deploying, and scaling applications.",
+        Docker: "Platform for containerizing, deploying, and scaling applications.",
         Firebase: "Cloud platform for databases, authentication, and app backend.",
         NextJS: "React-based framework for server-side rendering and static sites.",
         NodeJS: "Javascript runtime for building scalable backend applications.",
         PostgreSQL: "Robust open-source database with advanced querying capabilities.",
-        ReactJS: "Javascript library for building interactive user interfaces"
+        ReactJS: "Javascript library for building interactive user interfaces."
     }
 
     const stickers = Object.keys(stickerDescriptions) // we grab the array to turn into a map
