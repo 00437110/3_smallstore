@@ -22,13 +22,33 @@ export default function CartPage() {
         <h2>Your Cart</h2>
         <div className="cart-container">
           {Object.keys(cart).map((item, itemIndex) => {
-            const 
+            const itemData = cart[item]
+            const itemQuantity = itemData?.quantity
+
+            const imgName = itemData.name === 'Medieval Dragon Month Planner' ?
+            'planner' :
+            itemData.name.replaceAll(' Sticker.png', '').replaceAll('_','')
+            const imgUrl = 'low_res/'+imgName+'.jpeg'
+
             return (
               <div key={itemIndex} className="cart-item">
-
+                <img src={imgUrl} alt={imgName + '-img'} />
+                <div className="cart-item-info">
+                  <h3>{itemData.name}</h3>
+                  <p>{itemData.description.slice(0,100)}{itemData.description.length > 100 ? '...' : ''}</p>
+                  <h4>${itemData.prices[0].unit_amount / 100}</h4>
+                  <div className="quantity-container">
+                    <p><strong>Quantity</strong></p>
+                    <input value={itemQuantity} placeholder="2" onChange={()=>{}} />
+                    </div>
+                </div>
               </div>
             )
           })}
+        </div>
+        <div className="checkout-container">
+          <button >&larr; Continue Shopping</button>
+          <button >Checkout &rarr;</button>
         </div>
       </section>
 
