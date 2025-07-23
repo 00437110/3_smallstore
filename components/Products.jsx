@@ -8,9 +8,9 @@ export default function Products(props) {
     const { planner, stickers } = props
 
     const [portalImage, setPortalImage] = useState(null)
-    
 
-    const { handleAddProduct, cart } = useProducts()
+
+    const { handleIncrementProduct, cart } = useProducts()
 
     console.log(cart)
     /*
@@ -27,8 +27,8 @@ export default function Products(props) {
         const stickersKeys = Object.keys(stickerDescriptions) // we grab the array to turn into a map
     */
     if (!stickers.length || !planner) { return null }
-    console.log(planner)
-    console.log(stickers)
+    //console.log(planner)
+    //console.log(stickers)
 
 
     return (
@@ -79,7 +79,11 @@ export default function Products(props) {
                             </li>
                         </ul>
                         <div className="purchase-btns">
-                            <button>Add to Card</button>
+                            <button onClick={() => {
+                                const plannerPriceId = planner.default_price
+                                handleIncrementProduct(plannerPriceId, 1)
+
+                            }}>Add to Cart</button>
                         </div>
                     </div>
                 </div>
@@ -107,7 +111,11 @@ export default function Products(props) {
                                     <p className="text-medium">{stickerName}</p>
                                     <p>{sticker.description}</p>
                                     <h4><span>$</span>{sticker.prices[0].unit_amount / 100}</h4>
-                                    <button>Add to Cart</button>
+                                    <button onClick={() => {
+                                        const stickerPriceId = sticker.default_price
+                                        handleIncrementProduct(stickerPriceId, 1)
+
+                                    }}>Add to Cart</button>
                                 </div>
                             </div>
                         )

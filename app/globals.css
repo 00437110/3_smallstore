@@ -37,10 +37,22 @@ header {
     gap: 1rem;
 }
 
+
 .header-content>div:last-of-type {
     display: flex;
     align-items: center;
     justify-content: flex-end;
+    position: relative;
+    padding: 0.5rem;
+}
+
+.cart-num{
+    position: absolute;
+    top: -8px;
+    right: -5px;
+    color: #030615;
+    font-family: "Grenze",serif;
+    
 }
 
 .header-content h1 {
