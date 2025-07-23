@@ -9,19 +9,22 @@ export default function Cart() {
     //accumulator, current value and current index
 
     const numProducts = Object.keys(cart).reduce((acc, curr, currIndex) => {
-        const numProduct = cart[curr]
+        const numProduct = cart[curr].quantity
         const sum = acc + numProduct
         return sum
     }, 0)
 
-    console.log('num products accum ', numProducts)
+    //console.log('num products accum ', numProducts)
+
     return (
         <div>
             <Link className="unstyled-button" href={'/cart'}>
                 <i className="fa-solid fa-bag-shopping"></i>
-                <div className="cart-num">
-                    <p>{numProducts}</p>
-                </div>
+                {numProducts > 0 && (
+                    <div className="cart-num">
+                        <p>{numProducts}</p>
+                    </div>
+                )}
             </Link>
         </div>
     )
@@ -29,7 +32,7 @@ export default function Cart() {
 
 
 
-    /*
+/*
 the reduce arrow function will take 3 arguments
 accumulator, current value and current index
 then the reduce has a 2nd argument calld the default value
@@ -41,5 +44,5 @@ acc at first will be 0
 curr represents the identity in one of the cart keys
 the num product with the current key
 we will look inside the cart to find the price id, find the product and fnd sum
- for every price id, will find the associated umber, untilt it accumulates all of the value
-    */
+for every price id, will find the associated umber, untilt it accumulates all of the value
+*/
