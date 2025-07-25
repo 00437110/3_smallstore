@@ -53,12 +53,12 @@ export default function RootLayout({ children }) {
               <div className="links-container">
                 <div>
                   <h3>Erick</h3>
-                  <Link href={'/'}>Erick Hub</Link>
-                  <Link href={'/'}>Roadmap</Link>
+                  <Link href={'/'} target="_blank">Erick Hub</Link>
+                  <Link href={'/'} target="_blank">Roadmap</Link>
                 </div>
                 <div>
                   <h3>Store</h3>
-                  <Link href={'/'}>Home</Link>
+                  <Link href={'/'} >Home</Link>
                   <Link href={'/cart'}>Cart</Link>
                 </div>
                 <div>

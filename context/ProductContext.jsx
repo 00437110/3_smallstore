@@ -9,7 +9,7 @@ export default function ProductsProvider(props){
 
     const [cart, setCart] = useState({})
 
-    function handleIncrementProduct(price_id,num, data){
+    function handleIncrementProduct(price_id,num, data, noIncrement = false){
         const newCart = {
             ...cart
         }
@@ -18,7 +18,7 @@ export default function ProductsProvider(props){
             //newCart[price_id] = newCart[price_id] + num
             newCart[price_id] = {
                 ...data,
-                quantity: newCart[price_id]?.quantity + num
+                quantity: noIncrement ? num : newCart[price_id]?.quantity + num
             }
         } else{
             // product not yet in cart, so add it
@@ -29,7 +29,7 @@ export default function ProductsProvider(props){
             }
         }
 
-        if (newCart[price_id].quantity === 0){ // we need to remove the product if it reaches 0
+        if (parseInt(newCart[price_id].quantity) <= 0){ // we need to remove the product if it reaches 0
             delete newCart[price_id]
         }
 
@@ -45,7 +45,7 @@ export default function ProductsProvider(props){
         handleIncrementProduct
     }
 
-    useContext
+    
     return (
         <ProductContext.Provider value={value}>
             {children}

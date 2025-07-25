@@ -10,7 +10,7 @@ export default function Cart() {
 
     const numProducts = Object.keys(cart).reduce((acc, curr, currIndex) => {
         const numProduct = cart[curr].quantity
-        const sum = acc + numProduct
+        const sum = acc + parseInt(numProduct)
         return sum
     }, 0)
 

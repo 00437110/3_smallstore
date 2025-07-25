@@ -1,12 +1,13 @@
 'use client'
 
 import { useProducts } from "@/context/ProductContext";
+import Link from "next/link";
 import { useRouter } from "next/navigation";
 
 export default function CartPage() {
   const router = useRouter()
 
-  const { cart } = useProducts()
+  const { cart, handleIncrementProduct } = useProducts()
 
   const totalPrice = Object.keys(cart).reduce((acc, curr, currIndex) => {
     const numProduct = cart[curr].quantity
@@ -19,8 +20,8 @@ export default function CartPage() {
   async function createCheckout() {
     try {
       const baseURL = process.env.NEXT_PUBLIC_BASE_URL
-      const lineItems = Object.keys(cart).map((item,itemIndex)=>{
-        return{
+      const lineItems = Object.keys(cart).map((item, itemIndex) => {
+        return {
           price: item,
           quantity: cart[item].quantity
         }
@@ -35,7 +36,7 @@ export default function CartPage() {
       })
       const data = await response.json()
 
-      if(response.ok){
+      if (response.ok) {
         console.log(data)
         router.push(data.url)
       }
@@ -52,6 +53,7 @@ export default function CartPage() {
     <div>
       <section className="cart-section">
         <h2>Your Cart</h2>
+        {Object.keys(cart).length === 0 && (<p> You have no items in your cart</p>)}
         <div className="cart-container">
           {Object.keys(cart).map((item, itemIndex) => {
             const itemData = cart[item]
@@ -71,7 +73,11 @@ export default function CartPage() {
                   <h4>${itemData.prices[0].unit_amount / 100}</h4>
                   <div className="quantity-container">
                     <p><strong>Quantity</strong></p>
-                    <input value={itemQuantity} placeholder="2" onChange={() => { }} />
+                    <input type='number' value={itemQuantity} placeholder="1" onChange={(e) => {
+                      const newValue = e.target.value
+
+                      handleIncrementProduct(itemData.default_price, newValue, itemData, true)
+                    }} />
                   </div>
                 </div>
               </div>
@@ -79,7 +85,9 @@ export default function CartPage() {
           })}
         </div>
         <div className="checkout-container">
+          <Link href={'/'}>
           <button >&larr; Continue Shopping</button>
+          </Link>
           <button onClick={createCheckout}>Checkout &rarr;</button>
         </div>
       </section>
