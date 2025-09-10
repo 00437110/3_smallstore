@@ -26,10 +26,10 @@ export default async function Home(props) {
 
 
   return (
-    < >
+    <>
       <ImageBanner />
       <section>
-        <Products planner={planner} stickers={stickers} />
+
       </section>
 
     </>
