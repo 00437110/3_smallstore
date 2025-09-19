@@ -23,6 +23,7 @@ export const metadata = {
   description: "A store for programmers and productivity fiends alike",
 };
 
+/* We start here. In Layout. */
 export default function RootLayout({ children }) {
   return (
     <ProductsProvider>
@@ -47,7 +48,7 @@ export default function RootLayout({ children }) {
 
             <footer>
               <div className="email-container">
-                <h5>Get a sneak peak at new additions to the store, special offers, and so much more.</h5>
+                <h5>Get a sneak peak at new additions to the store, special offers, and so much more!</h5>
                 <EmailInput />
               </div>
               <div className="links-container">
