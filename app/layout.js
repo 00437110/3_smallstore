@@ -18,6 +18,7 @@ const geistMono = Geist_Mono({
   subsets: ["latin"],
 }); <body className={`${geistSans.variable} ${geistMono.variable}`}>*/
 
+/* .1 we set here the metadata, with the title and description*/
 export const metadata = {
   title: "Smallstore",
   description: "A store for programmers and productivity fiends alike",
@@ -25,14 +26,14 @@ export const metadata = {
 
 /* We start here. In Layout. */
 export default function RootLayout({ children }) {
-  return (
+  return ( /* The layout has the context of the product provider */
     <ProductsProvider>
       <html lang="en">
         <Head />
         <body >
           <div id="portal" />
           <div id="app">
-            <header>
+            <header> 
               <div className="header-content">
                 <Link href={'/'}>
                   <h1>Smallstore</h1>
@@ -46,7 +47,7 @@ export default function RootLayout({ children }) {
             </main>
             <div className="hr" />
 
-            <footer>
+            <footer> 
               <div className="email-container">
                 <h5>Get a sneak peak at new additions to the store, special offers, and so much more!</h5>
                 <EmailInput />
@@ -54,7 +55,7 @@ export default function RootLayout({ children }) {
               <div className="links-container">
                 <div>
                   <h3>Erick</h3>
-                  <Link href={'/'} target="_blank">Erick Hub</Link>
+                  <Link href={'https://eddomin-portfolio.netlify.app/'} target="_blank">Erick Hub</Link>
                   <Link href={'/'} target="_blank">Roadmap</Link>
                 </div>
                 <div>
