@@ -5,35 +5,18 @@ import Portal from "./Portal"
 import { useProducts } from "@/context/ProductContext"
 
 export default function Products(props) {
+
     const { planner, stickers } = props
 
     const [portalImage, setPortalImage] = useState(null)
 
-
     const { handleIncrementProduct, cart } = useProducts()
 
-    console.log(cart)
-    /*
-        const stickerDescriptions = {
-            CSS_HTML_Javascript: "Core web technologies for structure, styling, interactivity.",
-            Docker: "Platform for containerizing, deploying, and scaling applications.",
-            Firebase: "Cloud platform for databases, authentication, and app backend.",
-            NextJS: "React-based framework for server-side rendering and static sites.",
-            NodeJS: "Javascript runtime for building scalable backend applications.",
-            PostgreSQL: "Robust open-source database with advanced querying capabilities.",
-            ReactJS: "Javascript library for building interactive user interfaces."
-        }
-    
-        const stickersKeys = Object.keys(stickerDescriptions) // we grab the array to turn into a map
-    */
     if (!stickers.length || !planner) { return null }
-    //console.log(planner)
-    //console.log(stickers)
-
 
     return (
         <>
-            {portalImage && (
+            {portalImage && ( 
                 <Portal handleClosePortal={() => { setPortalImage(null) }}>
                     <div className="portal-content">
                         <img className="img-display" src={`med_res/${portalImage}.jpeg`} alt={`${portalImage}-high-res`} />
@@ -47,10 +30,9 @@ export default function Products(props) {
                 </div>
                 <div className="planner-container">
                     <div>
-                        <button onClick={() => {
+                        <button onClick={() => { 
                             setPortalImage('planner')
                         }}
-
                             className="img-button">
                             <img src="low_res/planner.jpeg" alt="high-res-planner" />
                         </button>
@@ -79,9 +61,9 @@ export default function Products(props) {
                             </li>
                         </ul>
                         <div className="purchase-btns">
-                            <button onClick={() => {
+                            <button onClick={() => { 
                                 const plannerPriceId = planner.default_price
-                                handleIncrementProduct(plannerPriceId, 1,planner)
+                                handleIncrementProduct(plannerPriceId, 1, planner)
 
                             }}>Add to Cart</button>
                         </div>
@@ -96,9 +78,9 @@ export default function Products(props) {
                     <p>Choose from our section logos</p>
                 </div>
                 <div className="sticker-container">
-                    {stickers.map((sticker, stickerIndex) => { //we use this to create a reiterated
+                    {stickers.map((sticker, stickerIndex) => { 
                         const stickerName = sticker.name
-                        const stickerImgUrl = sticker.name.replaceAll(' Sticker.png', '').replaceAll(' ', '_')
+                        const stickerImgUrl = sticker.name.replaceAll(' Sticker.png', '').replaceAll(' ', '_')                    
                         return (
                             <div key={stickerIndex} className="sticker-card">
                                 <button onClick={() => {
@@ -114,7 +96,6 @@ export default function Products(props) {
                                     <button onClick={() => {
                                         const stickerPriceId = sticker.default_price
                                         handleIncrementProduct(stickerPriceId, 1, sticker)
-
                                     }}>Add to Cart</button>
                                 </div>
                             </div>

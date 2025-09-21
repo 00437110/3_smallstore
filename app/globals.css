@@ -46,13 +46,13 @@ header {
     padding: 0.5rem;
 }
 
-.cart-num{
+.cart-num {
     position: absolute;
     top: -8px;
     right: -5px;
     color: #030615;
-    font-family: "Grenze",serif;
-    
+    font-family: "Grenze", serif;
+
 }
 
 .header-content h1 {
@@ -211,11 +211,11 @@ main,
     padding: 1rem;
 }
 
-.sticker-info h4{
+.sticker-info h4 {
     font-size: 1.8rem;
 }
 
-.sticker-info h4 span{
+.sticker-info h4 span {
     font-size: 0.8rem;
     padding-right: 0.1rem;
 }
@@ -242,7 +242,7 @@ main,
     gap: 1rem;
 }
 
-.cart-item img{
+.cart-item img {
     max-width: 30%;
     height: fit-content;
 }
@@ -253,11 +253,11 @@ main,
     gap: 0.5rem;
 }
 
-.cart-item-info input{
+.cart-item-info input {
     width: 100px;
 }
 
-.checkout-container{
+.checkout-container {
     padding-top: 2rem;
     display: flex;
     align-items: center;
@@ -351,7 +351,7 @@ footer .links-container>div {
 
 /*portal overlay*/
 
-.portal-container{
+.portal-container {
     position: fixed;
     left: 0;
     top: 0;
@@ -360,7 +360,7 @@ footer .links-container>div {
     z-index: 100;
 }
 
-.portal-underlay{
+.portal-underlay {
     position: absolute;
     inset: 0;
     z-index: 0;
@@ -371,13 +371,13 @@ footer .links-container>div {
 
 }
 
-.portal-content{
+.portal-content {
     position: absolute;
     pointer-events: none;
     z-index: 1005;
     top: 50%;
     left: 50%;
-    transform: translate(-50%,-50%);
+    transform: translate(-50%, -50%);
     max-width: 80vw;
     max-height: 80vh;
     display: grid;
@@ -467,12 +467,12 @@ footer .links-container>div {
 @media (min-width: 1024px) {
 
     .planner-container {
-        grid-template-columns: repeat(2, minmax(0,1fr));
+        grid-template-columns: repeat(2, minmax(0, 1fr));
         gap: 4rem;
     }
 
     .sticker-container {
-        grid-template-columns: repeat(4, minmax(0,1fr));
+        grid-template-columns: repeat(4, minmax(0, 1fr));
     }
 
     footer .links-container {

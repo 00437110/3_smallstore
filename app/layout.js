@@ -1,32 +1,20 @@
-//import { Geist, Geist_Mono } from "next/font/google";
 import "./globals.css";
 import "./fanta.css"
 import Head from "./head";
 import Link from "next/link";
 import Cart from "@/components/Cart";
 import EmailInput from "@/components/EmailInput";
+
 import ProductsProvider from "@/context/ProductContext";
 
-/*
-const geistSans = Geist({
-  variable: "--font-geist-sans",
-  subsets: ["latin"],
-});
-
-const geistMono = Geist_Mono({
-  variable: "--font-geist-mono",
-  subsets: ["latin"],
-}); <body className={`${geistSans.variable} ${geistMono.variable}`}>*/
-
-/* .1 we set here the metadata, with the title and description*/
 export const metadata = {
   title: "Smallstore",
   description: "A store for programmers and productivity fiends alike",
 };
 
-/* We start here. In Layout. */
+
 export default function RootLayout({ children }) {
-  return ( /* The layout has the context of the product provider */
+  return ( 
     <ProductsProvider>
       <html lang="en">
         <Head />

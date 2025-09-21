@@ -2,15 +2,10 @@ import ImageBanner from "@/components/ImageBanner";
 import Products from "@/components/Products";
 
 export async function getProducts() {
-  /*const baseURL = process.env.NEXT_PUBLIC_BASE_URL
-  const response = await fetch(baseURL+'/api/products')
-  const products = await response.json()
-  return products*/
   try {
-
-        const baseURL = process.env.NEXT_PUBLIC_BASE_URL
+        const baseURL = process.env.NEXT_PUBLIC_BASE_URL        
         const response = await fetch(baseURL + '/api/products')
-        const products = await response.json()
+        const products = await response.json()        
         return products
     } catch (err) {
         console.log(err.stack)
@@ -19,14 +14,14 @@ export async function getProducts() {
     }
 }
 
-export default async function Home(props) {
 
+export default async function Home(props) {
   const products = await getProducts()
 
   let planner = null
   let stickers = []
 
-  for (let product of products) { //products is an array, so, we will loop through it
+  for (let product of products) { 
     if (product.name === 'Medieval Dragon Month Planner') {
       planner = product
       continue
@@ -34,7 +29,6 @@ export default async function Home(props) {
     stickers.push(product)
 
   }
-
 
   return (
     <>

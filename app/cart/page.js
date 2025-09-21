@@ -6,12 +6,11 @@ import { useRouter } from "next/navigation";
 
 export default function CartPage() {
   const router = useRouter()
-
   const { cart, handleIncrementProduct } = useProducts()
 
   const totalPrice = Object.keys(cart).reduce((acc, curr, currIndex) => {
     const numProduct = cart[curr].quantity
-    //const actual = cart[curr]
+    
     const totalNumber = numProduct * cart[curr].prices[0].unit_amount / 100
     const sum = acc + totalNumber
     return sum
@@ -20,7 +19,7 @@ export default function CartPage() {
   async function createCheckout() {
     try {
       const baseURL = process.env.NEXT_PUBLIC_BASE_URL
-      const lineItems = Object.keys(cart).map((item, itemIndex) => {
+      const lineItems = Object.keys(cart).map((item, itemIndex) => {        
         return {
           price: item,
           quantity: cart[item].quantity
@@ -34,11 +33,13 @@ export default function CartPage() {
         },
         body: JSON.stringify({ lineItems })
       })
+     
       const data = await response.json()
-
+      
       if (response.ok) {
         console.log(data)
-        router.push(data.url)
+        console.log("router" + router)
+        router.push(data.url) 
       }
 
     } catch (err) {
@@ -47,18 +48,18 @@ export default function CartPage() {
     }
   }
 
-  //console.log('total price of stuff: ' + totalPrice)
-
   return (
     <div>
       <section className="cart-section">
         <h2>Your Cart</h2>
-        {Object.keys(cart).length === 0 && (<p> You have no items in your cart</p>)}
+        {Object.keys(cart).length === 0 && (<p> You have no items in your cart</p>) }
         <div className="cart-container">
           {Object.keys(cart).map((item, itemIndex) => {
+
             const itemData = cart[item]
             const itemQuantity = itemData?.quantity
 
+            
             const imgName = itemData.name === 'Medieval Dragon Month Planner' ?
               'planner' :
               itemData.name.replaceAll(' Sticker.png', '').replaceAll('_', '')
@@ -75,7 +76,6 @@ export default function CartPage() {
                     <p><strong>Quantity</strong></p>
                     <input type='number' value={itemQuantity} placeholder="1" onChange={(e) => {
                       const newValue = e.target.value
-
                       handleIncrementProduct(itemData.default_price, newValue, itemData, true)
                     }} />
                   </div>
