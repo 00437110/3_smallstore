@@ -1,23 +1,41 @@
-# Welcome to the Smallstore
+# Simple E-shop with Next.js and Stripe
 
-A little nifty store for products. Our selection thus far is a Medieval Dragon Month Planner! Plan your daily questing, your dragon slaying day or your farming days with this fine calendar.
+## A Full-stack electronic shop deployed in AWS
 
-If that's not to your liking, we offer stickers of technologies for you to choose! With a nice medieval esque design!
+This is a simple e-shop example. User can buy over the internet products with Stripe payment platform.
 
-# The way it works
+User can check the catalog of objects that are taken from Stripe. 
 
-You can pick whether to buy one or more monthly planners, or stickers. You can buy it all together and get it in the cart!
+They can add whichever product they want to buy to the cart by clicking the "Add to cart" button on each item.
 
-Then in the cart you can choose whatever amount of stuff you want to buy. Set a number or increment or decrement with the arrows.
+The cart object will start counting all the items that have been added.
 
-If set to 0 or lower, we will remove the items from the shopping cart. We assume you do not want it anymore.
+Once the user is ready to buy, they can click on the cart button.
 
-You can then pay your products with stripe. Just like that!
+Once in the cart page, user can see which products they can buy.
 
-# Technologies used:
+They can either change manually or input a number in order to change the amount of items they are buying.
+
+They can set it to zero or less in order to remove an item.
+
+They can go back to add more if they wish, otherwise, we can proceed to the Checkout.
+
+The checkout will allow them to use their credit card in order to pay for the products.
+
+
+## Where to check the project
+
+Go to: 
+https://master.d29qibdwd6pchf.amplifyapp.com/
+
+# Technologies used
 Next
 React
 Stripe
 Fanta CSS
 Javascript
 AWS
+
+## Comments, critics, suggestions or ideas?
+
+If you have any ideas for improvement, please submit them as an issue for now!
